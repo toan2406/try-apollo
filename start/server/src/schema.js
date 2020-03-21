@@ -33,10 +33,7 @@ const typeDefs = gql`
 
   type Query {
     allLaunches: [Launch]!
-    launches(
-      pageSize: Int
-      after: String
-    ): LaunchConnection!
+    launches(pageSize: Int, after: String): LaunchConnection!
     launch(id: ID!): Launch
     me: User
   }
