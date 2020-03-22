@@ -3,8 +3,10 @@ import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
 import LaunchTile from '../components/launch-tile';
-import { LAUNCH_TILE_DATA } from '../pages/launches';
+/* import { LAUNCH_TILE_DATA } from '../pages/launches'; */
 import * as LaunchDetailTypes from '../pages/__generated__/LaunchDetails';
+
+const LAUNCH_TILE_DATA = '';
 
 export const GET_LAUNCH = gql`
   query GetLaunch($launchId: ID!) {
@@ -18,13 +20,12 @@ export const GET_LAUNCH = gql`
 interface CartItemProps extends LaunchDetailTypes.LaunchDetailsVariables {}
 
 const CartItem: React.FC<CartItemProps> = ({ launchId }) => {
-  const { data, loading, error } = useQuery(
-    GET_LAUNCH,
-    { variables: { launchId } }
-  );
+  const { data, loading, error } = useQuery(GET_LAUNCH, {
+    variables: { launchId },
+  });
   if (loading) return <p>Loading...</p>;
   if (error) return <p>ERROR: {error.message}</p>;
   return data && <LaunchTile launch={data.launch} />;
-}
+};
 
 export default CartItem;
