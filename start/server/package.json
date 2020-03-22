@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "start": "nodemon src/index.js",
-    "start:ci": "node src/index.js"
+    "start:ci": "node src/index.js",
+    "publish": "npx apollo service:push --endpoint=http://localhost:4000"
   },
   "author": "",
   "license": "ISC",
@@ -30,9 +31,6 @@
     "prettier": "^1.19.1"
   },
   "jest": {
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/__utils"
-    ]
+    "testPathIgnorePatterns": ["/node_modules/", "/__utils"]
   }
 }
