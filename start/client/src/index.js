@@ -10,7 +10,9 @@ import injectStyles from './styles';
 const cache = new InMemoryCache();
 
 const link = new HttpLink({
-  uri: 'http://localhost:4000/',
+  headers: { authorization: localStorage.getItem('token') },
+  uri: 'http://localhost:4000/graphql',
+  // uri: 'http://localhost:4000/' is ok too?
 });
 
 const client = new ApolloClient({
